@@ -1,0 +1,203 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efek garis bawah saat hover */
+.navbar-nav .nav-link::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #007bff; /* Warna garis bawah */
+  transition: width 0.3s ease, left 0.3s ease; /* Efek transisi */
+}
+
+/* Munculkan garis bawah saat hover */
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+  width: 100%;
+  left: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  background: url('Asset/Background.jpg') no-repeat center center/cover;
+  color: white; /* Warna teks */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative; /* Mengizinkan kita untuk menggunakan elemen pseudo untuk efek overlay */
+}
+
+/* Tambahkan overlay untuk meningkatkan keterbacaan teks */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Gelap transparan */
+  z-index: 1; /* Pastikan overlay berada di belakang teks */
+}
+
+.hero-section h1,
+.hero-section p,
+.hero-section .btn {
+  position: relative; /* Memastikan teks muncul di atas overlay */
+  z-index: 2; /* Pastikan teks muncul di atas overlay */
+}
+
+/* Products Section */
+.products-section {
+  padding: 4rem 0;
+  background-color: #fff;
+}
+
+.products-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Mengatur ukuran card produk agar lebar dan tinggi konsisten */
+.card {
+  height: auto; /* Memastikan card dapat menyesuaikan tinggi */
+  width: 100%; /* Memastikan card mengambil 100% dari lebar kolom */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card img {
+  width: 100%; /* Gambar menyesuaikan lebar card */
+  height: 200px; /* Menetapkan tinggi gambar tetap */
+  object-fit: cover; /* Menjaga proporsi gambar tanpa terdistorsi */
+}
+
+/* Mengatur lebar dan penataan kolom agar card tetap rapi */
+.row > .col-md-2 { /* Mengubah dari col-md-4 menjadi col-md-2 */
+  margin-bottom: 30px; /* Menambahkan jarak antar card */
+  display: flex;
+  align-items: stretch;
+}
+
+.card-body {
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1rem; /* Menurunkan ukuran font judul */
+  margin-bottom: 0.5rem; /* Mengurangi jarak bawah */
+}
+
+.card-text {
+  font-size: 0.875rem; /* Menurunkan ukuran font teks */
+  margin-bottom: 1rem; /* Mengurangi jarak bawah */
+}
+
+.btn {
+  padding: 0.4rem 1rem; /* Mengurangi padding tombol */
+  margin-top: auto; /* Memastikan tombol berada di bagian bawah card */
+  font-size: 0.875rem; /* Mengurangi ukuran font tombol */
+}
+
+/* Hover efek untuk memperbesar card saat disentuh */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* About Section */
+.about-section {
+  padding: 4rem 0;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 4rem 0;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004c99;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Responsif untuk ukuran layar yang lebih kecil */
+@media (max-width: 768px) {
+  .card img {
+    height: 150px; /* Menyesuaikan tinggi gambar untuk layar kecil */
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+}

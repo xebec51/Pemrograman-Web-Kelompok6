@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkout - Toko Logo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Toko Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#products">Produk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">Kontak</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="checkout-section py-5">
+        <div class="container">
+            <h2 class="text-center">Checkout</h2>
+            <div class="row">
+                <!-- Keranjang Belanja -->
+                <div class="col-md-6">
+                    <h4>Keranjang Belanja</h4>
+                    <ul id="cart-items" class="list-group mb-3">
+                        <!-- Item Keranjang akan ditampilkan di sini -->
+                    </ul>
+                    <div class="text-right">
+                        <p><strong>Total: Rp<span id="total-price">0</span></strong></p>
+                    </div>
+                </div>
+                
+                <!-- Form Checkout -->
+                <div class="col-md-6">
+                    <h4>Detail Pengiriman</h4>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="full-name">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Alamat</label>
+                            <input type="text" class="form-control" id="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="text" class="form-control" id="phone" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Selesaikan Pembelian</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-3 bg-dark text-white text-center">
+        <p>© 2024 Toko Logo. Hak cipta dilindungi.</p>
+    </footer>
+
+    <!-- Bootstrap and jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="checkout.js"></script>
+</body>
+</html>

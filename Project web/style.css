@@ -12,6 +12,9 @@ body {
   padding: 1rem 2rem;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
+  position: sticky; /* Menjadikan navbar tetap di atas saat di-scroll */
+  top: 0; /* Posisi tetap di atas */
+  z-index: 1000; /* Pastikan navbar berada di depan konten lain */
 }
 
 .navbar-nav .nav-link {
@@ -43,17 +46,16 @@ body {
 /* Hero Section */
 .hero-section {
   background: url('Asset/Background.jpg') no-repeat center center/cover;
-  color: white; /* Warna teks */
+  color: white;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  position: relative; /* Mengizinkan kita untuk menggunakan elemen pseudo untuk efek overlay */
+  position: relative;
 }
 
-/* Tambahkan overlay untuk meningkatkan keterbacaan teks */
 .hero-section::after {
   content: '';
   position: absolute;
@@ -61,15 +63,15 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Gelap transparan */
-  z-index: 1; /* Pastikan overlay berada di belakang teks */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .hero-section h1,
 .hero-section p,
 .hero-section .btn {
-  position: relative; /* Memastikan teks muncul di atas overlay */
-  z-index: 2; /* Pastikan teks muncul di atas overlay */
+  position: relative;
+  z-index: 2;
 }
 
 /* Products Section */
@@ -85,8 +87,8 @@ body {
 
 /* Mengatur ukuran card produk agar lebar dan tinggi konsisten */
 .card {
-  height: auto; /* Memastikan card dapat menyesuaikan tinggi */
-  width: 100%; /* Memastikan card mengambil 100% dari lebar kolom */
+  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,14 +96,13 @@ body {
 }
 
 .card img {
-  width: 100%; /* Gambar menyesuaikan lebar card */
-  height: 200px; /* Menetapkan tinggi gambar tetap */
-  object-fit: cover; /* Menjaga proporsi gambar tanpa terdistorsi */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-/* Mengatur lebar dan penataan kolom agar card tetap rapi */
-.row > .col-md-2 { /* Mengubah dari col-md-4 menjadi col-md-2 */
-  margin-bottom: 30px; /* Menambahkan jarak antar card */
+.row > .col-md-2 {
+  margin-bottom: 30px;
   display: flex;
   align-items: stretch;
 }
@@ -115,22 +116,21 @@ body {
 }
 
 .card-title {
-  font-size: 1rem; /* Menurunkan ukuran font judul */
-  margin-bottom: 0.5rem; /* Mengurangi jarak bawah */
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .card-text {
-  font-size: 0.875rem; /* Menurunkan ukuran font teks */
-  margin-bottom: 1rem; /* Mengurangi jarak bawah */
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
 }
 
 .btn {
-  padding: 0.4rem 1rem; /* Mengurangi padding tombol */
-  margin-top: auto; /* Memastikan tombol berada di bagian bawah card */
-  font-size: 0.875rem; /* Mengurangi ukuran font tombol */
+  padding: 0.4rem 1rem;
+  margin-top: auto;
+  font-size: 0.875rem;
 }
 
-/* Hover efek untuk memperbesar card saat disentuh */
 .card:hover {
   transform: scale(1.05);
 }
@@ -190,7 +190,7 @@ body {
 /* Responsif untuk ukuran layar yang lebih kecil */
 @media (max-width: 768px) {
   .card img {
-    height: 150px; /* Menyesuaikan tinggi gambar untuk layar kecil */
+    height: 150px;
   }
 
   .hero-section h1 {

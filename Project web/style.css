@@ -45,7 +45,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: url('Asset/Background.jpg') no-repeat center center/cover;
+  background: url('Asset/bg.jpg') no-repeat center center/cover;
   color: white;
   height: 100vh;
   display: flex;

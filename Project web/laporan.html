@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laporan Pesanan - Toko Madani</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Toko Madani</a>
+    </nav>
+
+    <div class="container py-5">
+        <h2 class="text-center">Laporan Pesanan</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Pembeli</th>
+                    <th>Alamat</th>
+                    <th>Nomor Telepon</th>
+                    <th>Total Harga</th>
+                    <th>Metode Pembayaran</th>
+                    <th>Detail Pesanan</th>
+                </tr>
+            </thead>
+            <tbody id="orders-list">
+                <!-- Pesanan akan ditampilkan di sini -->
+            </tbody>
+        </table>
+
+        <!-- Tombol Kembali ke Halaman Awal -->
+        <div class="text-center">
+            <a href="index.html" class="btn btn-secondary">Kembali ke Halaman Awal</a>
+            <a href="stok.html" class="btn btn-warning">Atur Stok</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script untuk Menampilkan Laporan Pesanan -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+            const ordersList = document.getElementById('orders-list');
+            let orderRows = '';
+
+            orders.forEach((order, index) => {
+                orderRows += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${order.name}</td>
+                        <td>${order.address}</td>
+                        <td>${order.phone}</td>
+                        <td>Rp${order.totalPrice.toLocaleString('id-ID')}</td>
+                        <td>${order.paymentMethod}</td>
+                        <td>${order.cart.map(item => `${item.name} (${item.quantity} pcs)`).join(', ')}</td>
+                    </tr>
+                `;
+            });
+
+            ordersList.innerHTML = orderRows;
+        });
+    </script>
+</body>
+</html>

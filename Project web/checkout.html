@@ -47,6 +47,17 @@
                 <label for="phone">Nomor Telepon</label>
                 <input type="tel" class="form-control" id="phone" required>
             </div>
+
+            <!-- Pilihan Metode Pembayaran -->
+            <h4>Metode Pembayaran:</h4>
+            <div class="form-group">
+                <select class="form-control" id="payment-method" required>
+                    <option value="" disabled selected>Pilih Metode Pembayaran</option>
+                    <option value="cash">Cash</option>
+                    <option value="non-cash">Non-Cash (Transfer, E-wallet, dll)</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-success">Konfirmasi Pesanan</button>
         </form>
     </div>

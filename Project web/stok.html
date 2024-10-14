@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atur Stok Makanan - Toko Madani</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Toko Madani</a>
+    </nav>
+
+    <div class="container py-5">
+        <h2 class="text-center">Atur Stok Makanan</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nama Makanan</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Perbarui Stok</th>
+                </tr>
+            </thead>
+            <tbody id="stock-list">
+                <!-- Daftar stok makanan akan dimuat di sini -->
+            </tbody>
+        </table>
+
+        <!-- Tombol Kembali ke Halaman Awal -->
+        <div class="text-center">
+            <a href="index.html" class="btn btn-secondary">Kembali ke Halaman Awal</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script untuk Mengatur Stok -->
+    <script>
+        const foodItems = [
+            { name: 'Beras 1kg', price: 13000, initialStock: 50 },
+            { name: 'Beras Premium 1kg', price: 18000, initialStock: 30 },
+            { name: 'Gula Pasir 1kg', price: 14000, initialStock: 40 },
+            { name: 'Minyak Goreng 1 liter', price: 23000, initialStock: 25 },
+            { name: 'Tepung Terigu 1kg', price: 10000, initialStock: 20 },
+            { name: 'Kopi Robusta 100% Asli', price: 20000, initialStock: 15 },
+            { name: 'Susu Sapi', price: 18000, initialStock: 10 },
+            { name: 'Telur 1 lusin', price: 24000, initialStock: 60 },
+            { name: 'Telur Premium 1 lusin', price: 35000, initialStock: 40 },
+            { name: 'Air Galon Biasa', price: 21000, initialStock: 50 },
+            { name: 'Air Galon Aqua', price: 72000, initialStock: 30 },
+            { name: 'Refill Galon Biasa', price: 5000, initialStock: 100 },
+            { name: 'Refill Galon Aqua', price: 54000, initialStock: 50 },
+            { name: 'Galon Club', price: 51000, initialStock: 20 },
+            { name: 'Refill Galon Club', price: 32000, initialStock: 70 },
+            { name: 'Air Dus JS', price: 16000, initialStock: 50 },
+            { name: 'Air Dus Aqua', price: 38000, initialStock: 30 },
+            { name: 'Air Dus Club', price: 22000, initialStock: 40 },
+            { name: 'Garam 500gr', price: 5000, initialStock: 80 },
+            { name: 'Bawang Putih 1kg', price: 22000, initialStock: 20 },
+            { name: 'Bawang Merah 1kg', price: 21000, initialStock: 20 },
+            { name: 'Gula Merah 1kg', price: 25000, initialStock: 25 },
+            { name: 'Indomie Kaldu', price: 3000, initialStock: 100 },
+            { name: 'Indomie Soto', price: 3000, initialStock: 100 },
+            { name: 'Indomie Goreng', price: 3000, initialStock: 100 },
+            { name: 'Indomie Goreng Aceh', price: 3000, initialStock: 50 },
+            { name: 'Santan 200ml', price: 11000, initialStock: 30 },
+            { name: 'Kecap Manis 135ml', price: 10000, initialStock: 25 },
+            { name: 'Saus Sambal 135ml', price: 10000, initialStock: 25 },
+            { name: 'Ikan Kaleng 425gr', price: 19000, initialStock: 40 }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const stockList = document.getElementById('stock-list');
+
+            foodItems.forEach((item, index) => {
+                // Set stok awal hanya jika belum diatur di localStorage
+                let stock = localStorage.getItem(item.name);
+                if (!stock) {
+                    stock = item.initialStock;
+                    localStorage.setItem(item.name, stock); // Simpan stok awal di localStorage
+                }
+
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>Rp${item.price.toLocaleString('id-ID')}</td>
+                    <td id="stock-${index}">${stock}</td>
+                    <td>
+                        <input type="number" id="update-stock-${index}" placeholder="Tambah Stok">
+                        <button class="btn btn-primary" onclick="updateStock(${index}, '${item.name}')">Perbarui</button>
+                    </td>
+                `;
+                stockList.appendChild(row);
+            });
+        });
+
+        function updateStock(index, name) {
+            const input = document.getElementById(`update-stock-${index}`);
+            const newStock = parseInt(input.value);
+
+            if (!isNaN(newStock) && newStock >= 0) {
+                localStorage.setItem(name, newStock);
+                document.getElementById(`stock-${index}`).innerText = newStock;
+                input.value = '';
+                alert('Stok berhasil diperbarui!');
+            } else {
+                alert('Masukkan jumlah stok yang valid!');
+            }
+        }
+    </script>
+</body>
+</html>
